@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poiret+One&family=Poor+Story&family=Sono&display=swap');
+
+:root{
+  font-size: 16px;
+}
+
+*,*::after,*::before{
+  box-sizing: border-box;
+}
+
+body,ul{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+  margin-top: 0;
+}
+h1,h2,h3,h4,h5{font-family: 'Poiret One', cursive;}
+
+ul,li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body{
+  font-family: 'Sono','Montserrat', sans-serif;
+  // position: relative;
+  overflow-x: hidden;
+}
+
+button{
+  font-family: 'Sono','Montserrat', sans-serif;
+
+}
+
+h1,h2,h3,h4,h5,h6,li,p{cursor: default;}
+button{cursor: pointer;}
+
+::selection {
+  color: black;
+  background: goldenrod;
+}
+
+.tooltip{
+  position: relative;
+  &:hover > .tooltip-txt{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.tooltip-txt{
+  visibility: hidden;
+  border-radius: 8px;
+  padding: 0.1rem 0.25rem;
+  border: 0.1px solid whitesmoke;
+  width: fit-content;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: #4d187e;
+  color: whitesmoke;
+  position: absolute;
+  top: 100%;
+  left: -50%;
+  margin-left: -0.25rem;
+
+  opacity: 0;
+  transition: opacity 500ms;
+
+  // create arrow
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -0.25rem;
+    border-width: 5px;
+    border-color: transparent transparent  rgb(255, 255, 255) transparent;
+    border-style: solid;
+  }
+}
+
+.project-link{
+  display: flex;
+  column-gap: .5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  a{
+    display: flex;
+  }
+}
+
+.d-flex{display: flex !important;}
+.d-none{display: none !important;}
+.d-grid{display: grid !important;}
+
+.show-other-project{
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.toastBody {
+  font-family: 'Poiret One', cursive;
+  color: #10171D; /* #10171D */
+  font-size: 1.25rem !important;
+  font-weight: 600;
+}
+
+.Toastify__toast-container--top-center{
+  // top: 8em !important;
+}

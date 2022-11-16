@@ -1,0 +1,60 @@
+.home-page{
+  
+  background-color: #AFC5FC;
+  height: 100vh;
+  position: relative;
+}
+
+.kanagawa-inline{
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  &.transparent{
+    z-index: 1;
+    // display: none;
+  }
+
+  &.white{
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    // clip-path: inset(0px 0px 0px 100px);
+  }
+}
+
+
+
+
+.slider-container{
+  // width: inherit;
+  background-color: #290B58;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+}
+
+.slide-btn{
+  outline: 1px solid rgb(238 192 163);
+  border: 0;
+  border-radius: 49%;
+  background-color: rgba(221, 221, 221, 0.589);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 4;
+  top:50%;
+  left: -15px;
+
+  &:hover{
+    cursor: e-resize;
+  }
+
+  .bi-arrow-left-right{
+    width: 1.25rem;
+    height: 1.75rem;
+  }
+}
