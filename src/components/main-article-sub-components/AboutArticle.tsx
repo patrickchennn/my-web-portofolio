@@ -1,8 +1,6 @@
 import {forwardRef,MutableRefObject,useRef,SyntheticEvent} from "react";
 import cool_woman from "../../assets/kakkoii-onna.jpg";
 
-interface PropsDummy {}
-
 const AboutArticle = forwardRef((_,articlesRef) => {
   const readMoreBlurRef = useRef<HTMLSpanElement>(null);
   const readMoreTxtRef = useRef<HTMLSpanElement>(null);
