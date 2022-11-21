@@ -1,9 +1,15 @@
 import "../styles/top-nav.scss";
 import heterochromia from "../assets/heterochromia.png";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState,SyntheticEvent } from "react";
 import { useWindowScrollPositions } from "../hooks/useWindowScrollPositions";
 
-export default function TopNav(){
+interface TopNavProps{
+  articlesDOM: any
+}
+
+const TopNav = ({articlesDOM}: TopNavProps) => {
+  // console.log("render")
+
   const navLineAnimationRef = useRef<null | HTMLLIElement>(null);
   const topNavRef = useRef<null | HTMLDivElement>(null);
   const [direction,setDirection] = useState(window.screenY);
@@ -16,6 +22,7 @@ export default function TopNav(){
     isFirstTimeClick: true
   })
   const { scrollY } = useWindowScrollPositions()
+
 
   useEffect(() => {
     const topNav = topNavRef.current!;
@@ -30,7 +37,7 @@ export default function TopNav(){
       if(top<=-topNav.offsetHeight) {
         top=-topNav.offsetHeight
       }else{
-        top -= 6;
+        top -= 7;
       }
       topNav.style.top = top + "px";
       // console.log("sroll to DOWN")
@@ -41,7 +48,7 @@ export default function TopNav(){
         top=0 
 
       }else{
-        top += 6;
+        top += 7;
       }
       topNav.style.top = top + "px";
       // console.log("sroll to UP")
@@ -52,9 +59,12 @@ export default function TopNav(){
   },[scrollY])
 
   // console.log(`Scroll position is (${scrollX}, ${scrollY})`)
-  const handleMouseHover = (e: React.SyntheticEvent) => {
-    const target = e.target as HTMLElement;
+  const handleMouseHover = (e: SyntheticEvent) => {
+    let target = e.target as HTMLElement;
     if(target.nodeName==="LI" || target.nodeName==="SPAN"){
+      if(target.nodeName==="SPAN"){
+        target = target.parentNode as HTMLLIElement;
+      }
       const navLineAnimation = navLineAnimationRef.current!;
       // console.log(`${target.textContent} is hovered!`);
 
@@ -80,9 +90,12 @@ export default function TopNav(){
     }
   };
 
-  const handleClick = (e: React.SyntheticEvent) => {
-    const target = e.target as HTMLElement;
+  const handleClick = (e: SyntheticEvent) => {
+    let target = e.target as HTMLElement;
     if(target.nodeName==="LI" || target.nodeName==="SPAN"){
+      if(target.nodeName==="SPAN"){
+        target = target.parentNode as HTMLLIElement;
+      }
       const navLineAnimation = navLineAnimationRef.current!;
 
       // console.log(`${target.textContent} is clicked!`);
@@ -91,9 +104,6 @@ export default function TopNav(){
       navLineAnimation.style.width = `${navLineAnimationProperties.calcWidth}px`;
       navLineAnimation.style.left = `${navLineAnimationProperties.calcPosition}px`;
 
-      // navLineAnimationProperties.widthDef = navLineAnimationProperties.calcWidth;
-      // navLineAnimationProperties.leftDef = navLineAnimationProperties.calcPosition;
-      // navLineAnimationProperties.isFirstTimeClick=false;
 
       // update the values
       setNavLineAnimationProperties(prev => ({
@@ -102,10 +112,14 @@ export default function TopNav(){
         leftDef: prev.calcPosition,
         isFirstTimeClick: false
       }))
+      // element.scrollIntoView();
+      console.log(target.textContent)
+      const idx = Number(target.textContent!.charAt(0));
+      articlesDOM.current[idx].scrollIntoView({behavior: "smooth"});
     }
   };
 
-  const handleLeave = (e: React.SyntheticEvent) => {
+  const handleLeave = (e: SyntheticEvent) => {
     // const target = e.target as HTMLElement;
     // console.log(`${currTarget} is leaving!`);
     const navLineAnimation = navLineAnimationRef.current!;
@@ -127,14 +141,17 @@ export default function TopNav(){
       <img src={heterochromia} alt="home-btn" className="home-btn"/>
       <nav className="top-nav">
         <ul onMouseOver={handleMouseHover} onClick={handleClick} onMouseLeave={handleLeave}>
-          <li>1. <span>About</span></li>
-          <li>2. <span>Experience</span></li>
-          <li>3. <span>Projects</span></li>
-          <li>4. <span>Contact</span></li>
+          <li>0. <span>About</span></li>
+          <li>1. <span>Experience</span></li>
+          <li>2. <span>Projects</span></li>
+          <li>3. <span>Contact</span></li>
           <li ref={navLineAnimationRef} className="nav-line-animation"></li>
         </ul>
         <li><button className="resume-btn">Resume</button></li>
       </nav>
     </div>
   );
-}
+};
+
+
+export default TopNav;

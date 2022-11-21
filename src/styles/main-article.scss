@@ -9,8 +9,7 @@
 
 
 article{
-  margin-bottom: 6rem;
-  padding: 0 10rem 0 10rem;
+  padding: 8rem 10rem 0rem 10rem;
   .title{
     font-size: 2rem;
     .high-lighter{
@@ -30,12 +29,15 @@ article{
 
 
 .about-me-article{
-  padding-top: 90px;
   .about-me{
     display: flex;
     column-gap: 8rem;
     img{
       width: 250px;
+      height: 300px;
+    }
+    p{
+      margin: 0;
     }
   }
 }
@@ -45,7 +47,6 @@ article{
 
 
 .experience-article{
-  padding-top: 90px;
   .title{
     text-align:center;
   }
@@ -60,7 +61,6 @@ article{
   }
 
   .experience-list{
-    margin: auto 0;
     li{
       border-left: 2px solid #233554;
       padding: 1rem;
@@ -78,15 +78,16 @@ article{
     div{
       height: 100%;
       h2{
-        margin-bottom: 4px;
+        margin-bottom: 0px;
       }
       h3{
+        margin-bottom: 12px;
         color: #adadad;
       }
     }
 
     .experience-contribution{
-      padding: 2rem;
+      padding: 0;
       border-radius: 20px;
       &::after{
         background-image: url("../assets/tv-error.gif");
@@ -150,6 +151,7 @@ article{
       width: max-content;
       height: max-content;
       filter: grayscale(100%);
+      align-self: center;
       transition: filter 500ms ease-out;
       &:hover{
         filter: none;
@@ -161,7 +163,8 @@ article{
         padding: 10px;
         border: 1px solid #efefef;
         border-radius: 20px;
-        background-color: black;
+        background-color: #242424;
+        box-shadow: 4px 4px 0px 0px #e7e7e7;
       }
       div{
         position: relative;
@@ -177,7 +180,7 @@ article{
     display: flex;
     justify-content: center;
     button{
-      border: none;
+      border: 1px solid white;
       border-radius: 20px;
       padding: 0.25rem 0.75rem;
       width: 100%;
@@ -271,8 +274,7 @@ article{
   .title{
     text-align:center;
   }
-  form{
-  }
+
   input,textarea{
     padding: 0.5rem 0.75rem;
     border: 1px solid #EFEFEF;

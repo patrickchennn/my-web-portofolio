@@ -1,10 +1,10 @@
 import {Send,ArrowRepeat} from "../Icons";
 import emailjs from '@emailjs/browser';
-import React,{ useRef } from "react";
+import React,{ MutableRefObject, useRef } from "react";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ContactArticle() {
+const ContactArticle = React.forwardRef((_, articlesRef) => {
   const formValuesRef = useRef({
     from_name:"",
     from_email:"",
@@ -65,8 +65,10 @@ export default function ContactArticle() {
       });
 
   };
+
+
   return (
-    <article className="contact-article">
+    <article ref={(el: HTMLElement) => (articlesRef as MutableRefObject<HTMLElement[]>)!.current[3] = el} className="contact-article">
       <h1 className="title">4. <span className="high-lighter">Let's Talk</span></h1>
       <form onSubmit={sendEmail}>
         {/* <ToastContainer bodyClassName="toastBody"/> */}
@@ -105,4 +107,6 @@ export default function ContactArticle() {
       </form>
     </article>
   )
-}
+});
+
+export default ContactArticle;

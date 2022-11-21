@@ -43,7 +43,7 @@ button{cursor: pointer;}
 
 ::selection {
   color: black;
-  background: goldenrod;
+  background: yellow;
 }
 
 .tooltip{
@@ -115,4 +115,33 @@ button{cursor: pointer;}
 
 .Toastify__toast-container--top-center{
   // top: 8em !important;
+}
+
+.read-more-blur{
+  color: transparent;
+  text-shadow: 0 0 6px #fff;
+  user-select: none;
+}
+
+.read-more-blur-show{
+  color: #efefef !important;
+  text-shadow: none !important;
+
+  user-select: text !important;
+}
+
+.read-more-txt{
+  display: none;
+}
+
+.read-more-txt-show{
+  display: inline !important;
+}
+
+.read-more-btn{
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 0 4px;
+  color: #efefef;
+  background-color: transparent;
 }

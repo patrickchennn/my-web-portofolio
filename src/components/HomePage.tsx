@@ -24,6 +24,7 @@ export default function HomePage(){
 
 
   const onClickSlide = () => {
+    console.log("btn clcidked");
     setIsClicked(true);
   };
 

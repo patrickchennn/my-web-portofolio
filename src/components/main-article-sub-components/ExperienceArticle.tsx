@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,MutableRefObject } from "react";
 
-export default function ExperienceArticle(){
+const ExperienceArticle = React.forwardRef((_, articlesRef) => {
   const experienceDetailRef = useRef<null | HTMLDivElement>(null);
   const experienceListRef = useRef<null | HTMLUListElement>(null);
   const [prevIdx, setPrevIdx] = useState(0);
@@ -34,7 +34,7 @@ export default function ExperienceArticle(){
   };
 
   return(
-    <article className="experience-article">
+    <article ref={(el: HTMLElement) => (articlesRef as MutableRefObject<HTMLElement[]>)!.current[1] = el} className="experience-article">
       <h1 className="title">2. <span className="high-lighter">Experience</span></h1>
       <div className="experience-container">
         <ul ref={experienceListRef} onClick={handleExperienceListClick} className="experience-list">
@@ -99,4 +99,7 @@ export default function ExperienceArticle(){
       </div>
     </article>
   )
-}
+});
+
+
+export default ExperienceArticle;
